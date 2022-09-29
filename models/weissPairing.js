@@ -7,5 +7,5 @@ const pairingSchema = new mongoose.Schema({
     Round: Number
 })
 
-const Pairing = mongoose.model('Pairing',pairingSchema);
-module.exports = Pairing;
+const weissPairing = mongoose.model('weissPairing',pairingSchema);
+module.exports = weissPairing;
