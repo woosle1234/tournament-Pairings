@@ -12,51 +12,71 @@
 
 <body>
     <div class="container p-3" style="width:100vw;height:100vh;align-items: center;align-content: center;">
-        <h1>Round Pairing</h1>
-        <form method="POST" action="/uploadYugioh/pairings" class="p-3" enctype="multipart/form-data">
-            <div class="form-group mb-3">
-
-                <label class="form-group-text" for="inputGroupSelect01">Round</label>
-
-                <select class="form-control" id="Round" name="Round">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                </select>
+        <% if( message ) { if( success=='true' ) { %>
+            <div class="alert alert-success" role="alert">
+                <%= message %>
             </div>
-            <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" name="file"
-                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                    required>
-                <label class="custom-file-label" for="file">Choose file...</label>
-            </div>
-            <div class="form-group mb-3">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+            <% }else{ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= message %>
+                </div>
+                <% } } %>
+                    <h1>Yugioh</h1>
+                    <div class="container p-2 border border-primary border-4">
+                        <h2>Round Pairing</h2>
+                        <form method="POST" action="/uploadYugioh/pairings" class="p-3" enctype="multipart/form-data">
+                            <div class="form-group mb-3">
+
+                                <label class="form-group-text" for="inputGroupSelect01">Round</label>
+
+                                <select class="form-control" id="Round" name="Round">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                </select>
+                            </div>
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" name="file"
+                                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                    required>
+                                <label class="custom-file-label" for="file">Choose file...</label>
+                            </div>
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-danger" onclick="location.href='/deleteyugiohpairings'" >Delete Pairings</button>
+                                <button type="button" class="btn btn-success" onclick="location.href='/yugioh'" >View Pairings</button>
+                            </div>
+                        </form>
 
 
 
-        <h1>Standings</h1>
-        <form method="POST" action="/uploadYugioh/standing" class="p-3" enctype="multipart/form-data">
-            <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" name="file"
-                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                    required>
-                <label class="custom-file-label" for="file">Choose file...</label>
-            </div>
-            <div class="form-group mb-3">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
+                        <h2>Standings</h2>
+                        <form method="POST" action="/uploadYugioh/standing" class="p-3" enctype="multipart/form-data">
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" name="file"
+                                    accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                    required>
+                                <label class="custom-file-label" for="file">Choose file...</label>
+                            </div>
+                            <div class="form-group mb-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-danger" onclick="location.href='/deleteyugiohstandings'" >Delete Standings</button>
+                                <button type="button" class="btn btn-success" onclick="location.href='/yugioh/standing'" >View Standings</button>
+                            </div>
+                        </form>
+                    </div>
+                    <h1>Weiss Schwarz</h1>
+                    <div class="container p-2 border border-success border-4">
+                        <h2>In Development</h2>
+                    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

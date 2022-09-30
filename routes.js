@@ -21,5 +21,9 @@ router.get('/upload', tournamentController.newUpload);
 router.post('/uploadYugioh/:type', tournamentController.uploadFile, tournamentController.newYugioh); 
 
 router.post('/uploadWeiss/:type', tournamentController.uploadFile, tournamentController.newWeissPairings); 
+
+router.get('/deleteYugiohPairings',tournamentController.deleteYugiohPairings);
+
+router.get('/deleteYugiohStandings',tournamentController.deleteYugiohStandings);
  
 module.exports = router; // export to use in server.js

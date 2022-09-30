@@ -10,8 +10,8 @@
     <title>401 Games Yugioh Tournament Pairings</title>
 </head>
 
-<body>
-    <div class="container text-center p-2">
+<body class="bg-dark" >
+    <div class="container text-center p-2 text-white">
         <h1 class="p-2" >Round <% if (data.length > 0) { %> <%= data[0].Round %> <% } else {  %> 0 <% } %> </h1>
 
         <button type="button" onclick="location.href='/yugioh/standing'" class="btn btn-primary btn-lg btn-block p-2" style="width: 100%" >Standing</button>

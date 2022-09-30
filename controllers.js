@@ -60,12 +60,12 @@ const newYugioh = (req, res, next) => {
                         })
                         newYugiohPairings.save((err, d) => {
                             if (err) {
-                                res.json({ "Error": err });
+                                res.redirect("/upload?message=Yugioh Pairings Could not be Submitted&success=false");
                             }
                         })
                     }
                     yugiohStanding.deleteMany({}).then(result => {
-                        res.json({ Message: "Yugioh Pairings Successfully Submitted ", data: data });
+                        res.redirect("/upload?message=Yugioh Pairings Successfully Submitted&success=true");
                     })
 
                 })
@@ -80,11 +80,11 @@ const newYugioh = (req, res, next) => {
 
                         newYugiohStanding.save((err,d)=>{
                             if (err) {
-                                res.json({ "Error": err });
+                                res.redirect("/upload?message=Yugioh Standings Could not be Submitted&success=false");
                             }
                         })
                     }
-                    res.json({ Message: "Yugioh Standings Successfully Submitted ", data: data });
+                    res.redirect("/upload?message=Yugioh Standings Successfully Submitted&success=true");
                 })
             }
         });
@@ -118,7 +118,22 @@ const getWeissStanding = (req, res, next) => {
 
 
 const newUpload = (req, res, next) => {
+    if(req.query!=={}){
+        res.render(path.join(__dirname, 'html', 'upload.html'),{message: req.query.message, success:req.query.success});
+    }else
     res.render(path.join(__dirname, 'html', 'upload.html'));
+};
+
+const deleteYugiohPairings = (req, res, next) => {
+    yugiohPairing.deleteMany({}).then(r=>{
+        res.redirect("/upload?message=Yugioh Pairings Deleted&success=true");
+    })
+};
+
+const deleteYugiohStandings = (req, res, next) => {
+    yugiohStanding.deleteMany({}).then(r=>{
+        res.redirect("/upload?message=Yugioh Standings Deleted&success=true");
+    })
 };
 
 module.exports = {
@@ -131,4 +146,6 @@ module.exports = {
     getHome,
     getYugiohStanding,
     getWeissStanding,
+    deleteYugiohPairings,
+    deleteYugiohStandings
 };
